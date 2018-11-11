@@ -2,7 +2,7 @@ APIs
 ======
 The apis (APIs Secure) project offers an OAuth 2.0 Authorization Server that can be used to kickstart your API authentication. In essence it enables you to focus on your actual resource endpoints and use the out-of-the-box authorization server to authenticate resource owners and subsequently validate the access tokens that were granted to the Client applications. We will describe the typical use cases in more details in sections below.
 
-## Features
+## Features(特性)
 
 - An OAuth2 Authorization Server compliant with [the draft v2-31 specification](http://tools.ietf.org/html/draft-ietf-oauth-v2-31)
   * Pluggable authentication and userConsent handling (with default implementations provided)
@@ -21,7 +21,7 @@ The apis (APIs Secure) project offers an OAuth 2.0 Authorization Server that can
 
 - An implementation add-on for connecting to a compliant SAML IdP for authentication
 
-## Getting Started
+## Getting Started(入门)
 
 First clone this repo. To build the sources you need to have [maven 3](http://maven.apache.org/download.html) installed.
 
@@ -33,11 +33,11 @@ After the clone build the entire project
 
     mvn clean install
 
-## Upgrades
+## Upgrades(升级)
 
 Changes between versions are listed in [CHANGES.md](CHANGES.md)
 
-### Run Authorization Server
+### Run Authorization Server(运行授权服务器)
 
 Go the authorization-server-war and start the application
 
@@ -46,19 +46,19 @@ Go the authorization-server-war and start the application
 
 The authorization-server-war application is capable of authenticating Resource Owners (e.g. users) and granting and validating Access Tokens (and optional Refresh Tokens) on behalf of Resource Servers that are receiving resource calls from a Client app. It also offers a JavaScript application to manage Resource Servers and Client application instances. 
 
-### Run Example Resource Server (war & standalone modus)
+### Run Example Resource Server (war & standalone modus)【运行示例资源自服务器 (war & standalone modus)】
 
 We have provided two example resource servers. One (apis-example-resource-server-war) is a very simple Java web application
 that only demonstrates how a Resource Server can communicate with the Authorization Server using the `org.surfnet.oaaas.auth.AuthorizationServerFilter` (which is a simple `javax.servlet.Filter`). The `AuthorizationServerFilter` only protects a single JSP page in the apis-example-resource-server-war module. See the [README of this submodule] (https://github.com/OpenConextApps/apis/tree/master/apis-example-resource-server-war) on how to use curl to test this 'flavor'.
 
-For now we will continue to use the other example resource server (apis-example-resource-server, NOT the apis-example-resource-server-war!) , built using [Dropwizard] (http://dropwizard.codahale.com/), to demonstrate the apis Authorization Server. We will need to start the apis-exampl	e-resource-server to demonstrate the entire flow (new Terminal session):
+For now we will continue to use the other example resource server (apis-example-resource-server, NOT the apis-example-resource-server-war!) , build using [Dropwizard] (http://dropwizard.codahale.com/), to demonstrate the apis Authorization Server. We will need to start the apis-exampl	e-resource-server to demonstrate the entire flow (new Terminal session):
 
     cd apis-example-resource-server
     java -jar target/apis-example-resource-server-1.1.1-SNAPSHOT.jar
 
 If the last command gives you an error check if the master version is still 1.1.1-SNAPSHOT.
 
-### Run Example Client App
+### Run Example Client App(运行示例客户端)
 
 We have now an Authorization Server running and an example Resource Server (and we have not much to show for it, yet!). To demonstrate the entire flow we will start an example Client Application which will communicate with:
 
@@ -74,7 +74,7 @@ Start the example-client-app (new Terminal session)
 
 Now start your browser and go to <a href="http://localhost:8084/test" target="_blank">http://localhost:8084/test</a>. In three steps you can see what the client app has to do to make a REST call to example Resource Server. You can also very easily test this against any Resource Server (or for that case an Authorization Server running not running on local host) by changing the values in the client.apis.properties file.
 
-### Resource Servers and Client apps GUI registration
+### Resource Servers and Client apps GUI registration(资源服务器和客户端app GUI注册)
 
 The GUI for Resource Servers and Client apps registration can be found at <a href="http://localhost:8080/client/client.html" target="_blank">http://localhost:8080/client/client.html</a>:
 
@@ -100,13 +100,13 @@ After the login you will need to grant consent (the Authorization Server GUI is 
 
 After this you can add your own ResourceServer and Client instances. See the tooltip's in the insert/ edit forms for more information about the attributes of Resource Servers and Clients.
 
-#### Admin privileges
+#### Admin privileges (管理权限)
 It is possible to have admin privileges in the JS GUI, meaning you can edit / delete all of the known Resource Servers and Clients. A common usecase if you have a department responsible for the administration of ResourceServers and Clients. In order to obtain admin rights your
 AuthenticatedPrincipal needs to return true for the `isAdminPrincipal` method. The default implementation does not so and everyone can only edit / delete their own ResourceServers and Clients. You can change this by changing the `authenticatorClass` configuration in the `apis-authorization-server-war/src/test/resources/apis.application.properties` file to `org.surfnet.oaaas.noop.NoopAdminAuthenticator`.
 
 The [surfconext authn submodule](https://github.com/OpenConextApps/apis/tree/master/apis-surfconext-authn) is another production-ready implementation that uses group membership to determine the is-admin feature.
 
-### Component overview
+### Component overview(组件预览)
 
 The following diagram shows all components and how they play together.
 
@@ -122,7 +122,7 @@ Client apps and resource servers are registered using the OAuth admin applicatio
 
 Typically you will want to deploy the authorization server in a servlet container like Tomcat or Jetty. You can of course also deploy the war on an Application Server if you like added complexity. One authorization server can serve up to many, many resource servers and as the communication between authorization server and resource server is a very simple REST / JSON API the technical nature of the resource server really does not care. See the AuthorizationServerFilter.java in the apis-resource-server-library module for an example on how to resource servers can 'talk' to the authorization server.
 
-## Extending the defaults
+## Extending the defaults(扩展默认功能)
 
 The defaults are alright for getting started, but in real life you must provide at least one implementation (and most likely two):
 
@@ -133,7 +133,7 @@ The defaults are alright for getting started, but in real life you must provide 
 
 The default implementations reside in the apis-authorization-server-war submodule. 
 
-### Authentication module 
+### Authentication module (授权模块)
 
 To change the authentication of Resource Owners that are redirected to the /authorize page you will either extend `org.surfnet.oaaas.authentication.FormLoginAuthenticator` and override `processForm`:
 
@@ -156,7 +156,7 @@ Or you can implement your own 'org.surfnet.oaaas.auth.AbstractAuthenticator'. Th
 
 For an example of an `AbstractAuthenticator` that uses a federation of SAML2 compliant Identity Providers to perform the actual authentication have a look at `SAMLAuthenticator` in the submodule apis-surfconext-authn.
 
-### User Consent
+### User Consent (用户一致)
 
 The default User Consent page is handled by `org.surfnet.oaaas.consent.FormUserConsentHandler`. You can easily extend and override the default behavior:
 
@@ -173,7 +173,7 @@ protected String getUserConsentUrl() {
 }
 ```
 
-### How do Resource Servers verify the Access Token?
+### How do Resource Servers verify the Access Token?(如何让资源服务器验证Access Token)
 
 They don't. They ask the Authorization Server to do this. For Java implemented Resource Servers you can use (or extend) the `AuthorizationServerFilter` in the `apis-resource-server-library` module. For non-Java Resource Servers the protocol is simple:
 
@@ -209,7 +209,7 @@ a specific subtype of `AuthenticatedPrincipal` (e.g. would like to cast the prin
 `adminService.jsonTypeInfoIncluded` in the properties file that drive the Authorization Server (`apis.application.properties`) and respectively the properties file that drive the Resource Server
 (the property file driving the AuthorizationServletFilter - if used - is set using a servlet init-parameter named `apis-resource-server.properties.file`).
 
-#### Authorization Server - Resource Server demo flow
+#### Authorization Server - Resource Server demo flow(授权服务器-资源服务器demo流程)
 
 First start up the Authorization Server (if you have not already done so):
 
@@ -279,7 +279,7 @@ And the result as expected (note as we used client credential flow the principal
 
 If you write your own implementation of the above flow for your Resource Servers strongly consider caching subsequent calls & answers from the Authorization Server.
 
-### Plugging in your custom implementations
+### Plugging in your custom implementations(自定义实现插件)
 
 The Authorization Server is wired up using a Spring configuration. The class `org.surfnet.oaaas.config.SpringConfiguration` in the apis-authorization-server-war module is responsible for wiring up the dependencies. You don't need to override this configuration if you only want to change the authentication (and/ or the user consent) as we have externalized this into the apis.application.properties file. The authorization server which you have started  up with the maven jetty plugin uses the apis.application.properties file in apis-authorization-server-war/src/test/resources.
 
@@ -307,7 +307,7 @@ public AbstractAuthenticator authenticator() {
 }
 ```
 
-### The REST interface to build your own GUI
+### The REST interface to build your own GUI(使用REST接口来构建你自己的GUI)
 
 You can use the exposed REST interface of the ResourceServerResource, ClientResource and AccessTokenResource to build your own GUI. The resources offer full CRUD for the persistent objects. See the annotations on the mentioned Resources.
 
@@ -332,7 +332,7 @@ See the information in the [surfconext authn submodule](https://github.com/OpenC
 As noted in the OAuth 2.0 RFC ([1](http://tools.ietf.org/html/rfc6749#section-3.1), [2](http://tools.ietf.org/html/rfc6749#section-3.1.2.1), [3](http://tools.ietf.org/html/rfc6749#section-3.2)), the use of TLS is required, as credentials are transmitted in clear-text.
 This is not enforced at code level, but it must be when deploying the application.
 
-### Tests
+### Tests测试
 
 You can build the entire project including the integration and selenium tests (which are dependent on your version of FireFox):
 
