@@ -1,6 +1,10 @@
+<<<<<<< HEAD
 APIs
 ======
 The apis (APIs Secure) project offers an OAuth 2.0 Authorization Server that can be used to kickstart your API authentication. In essence it enables you to focus on your actual resource endpoints and use the out-of-the-box authorization server to authenticate resource owners and subsequently validate the access tokens that were granted to the Client applications. We will describe the typical use cases in more details in sections below.
+=======
+# [Start Bootstrap](http://startbootstrap.com/) - [Online Digi Market Place](http://startbootstrap.com/template-overviews/landing-page/)
+>>>>>>> a13da88afe80a9d16e1acf0496836e2225eea060
 
 ## Features
 
@@ -338,3 +342,7 @@ You can build the entire project including the integration and selenium tests (w
 
 mvn clean install -P integration
 
+<<<<<<< HEAD
+=======
+Copyright 2013-2016 Blackrock Digital LLC. Code released under the [MIT](https://github.com/BlackrockDigital/startbootstrap-landing-page/blob/gh-pages/LICENSE) license.
+>>>>>>> a13da88afe80a9d16e1acf0496836e2225eea060
