@@ -1,0 +1,29 @@
+apply plugin: 'com.android.application'
+
+android {
+    compileSdkVersion 28
+
+    defaultConfig {
+        applicationId "com.adcolony.rewardedinterstitialdemo"
+        minSdkVersion 14
+        targetSdkVersion 28
+        versionCode 1
+        versionName "1.0"
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+}
+
+dependencies {
+    implementation "androidx.appcompat:appcompat:1.0.1"
+    implementation 'com.adcolony:sdk:3.3.6'
+    // 16.0.0 is the latest version of the ads API supported by AdColony.
+    // Attempting to use version 17.0.0 leads to a crash
+    // because we cannot set the AdMob App ID in the AndroidManifest.xml:
+    // https://developers.google.com/admob/android/quick-start#update_your_androidmanifestxml
+    implementation "com.google.android.gms:play-services-ads:16.0.0"
+}

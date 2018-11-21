@@ -1,147 +1,86 @@
 # Change Log
-
-All notable changes to this project will be documented in this file.
-This project adheres to [Semantic Versioning].
-
-This change log follows the format documented in [Keep a CHANGELOG].
-
-[Semantic Versioning]: http://semver.org/
-[Keep a CHANGELOG]: http://keepachangelog.com/
-
-## 3.9.7 - 2018-10-04
-
-- Allow webpack 4 entrypoints chunks
-- Fixes [#108](https://github.com/ztoben/assets-webpack-plugin/issues/108)
-
-## 3.9.6 - 2018-08-20
-
-- Fixes [#125](https://github.com/ztoben/assets-webpack-plugin/issues/125)
-
-## 3.9.5 - 2018-08-09
-
-- Adds the `keepInMemory` option to toggle whether you want the assets file generated when running in `webpack-dev-server`.
-
-## 3.9.4 - 2018-08-08
-
-- Adds the `includeAllFileTypes`, and `fileTypes` options for controlling which files are included in the assets file.
-
-## 3.9.3 - 2018-08-07
-
-- Fixes an issue where `useCompilerPath` wasn't correctly resolving the path.
-
-## 3.9.2 - 2018-08-07
-
-- Reverts [#109](https://github.com/ztoben/assets-webpack-plugin/pull/109), fixes [#118](https://github.com/ztoben/assets-webpack-plugin/issues/118).
-
-## 3.9.1 - 2018-08-06
-
-- `useCompilerPath` option to override path with webpack output path set in config.
-
-## 3.9.0 - 2018-08-06
-
-- ~~Now supports webpack 4 entries with multiple chunks. See [#109](https://github.com/ztoben/assets-webpack-plugin/pull/109) for details.~~
-- Use compiler.outputFileSystem for output.
-- Fixes [#108](https://github.com/ztoben/assets-webpack-plugin/issues/108), [#111](https://github.com/ztoben/assets-webpack-plugin/issues/111), and [#92](https://github.com/ztoben/assets-webpack-plugin/issues/92).
-
-## 3.8.4 - 2018-06-20
-
-### Changed
-
-- No code changed. Purely for testing tagged releases on git.
-
-## 3.8.3 - 2018-06-18
-
-### Changed
-
-- Package json was pointing to the wrong index file.
-
-## 3.8.2 - 2018-06-18
-
-### Changed
-
-- Add babel to the build process.
-
-## 3.8.1 - 2018-06-18
-
-### Changed
-
-- Support for listing the manifest entry first when `manifestFirst` option is set. See [#66](https://github.com/ztoben/assets-webpack-plugin/issues/66) for details.
-
-## 3.8.0 - 2018-06-15
-
-### Changed
-
-- Reverts [#90](https://github.com/ztoben/assets-webpack-plugin/pull/90), fixes [#93](https://github.com/ztoben/assets-webpack-plugin/issues/93) and [#92](https://github.com/ztoben/assets-webpack-plugin/issues/92)
-
-## 3.7.2 - 2018-06-14
-
-### Changed
-
-- Reduces npm package size [#67](https://github.com/ztoben/assets-webpack-plugin/issues/67)
-
-## 3.7.1 - 2018-06-13
-
-### Changed
-
-- Fixes a parsing error with the asset path introduced by the fix for [#88](https://github.com/ztoben/assets-webpack-plugin/issues/88)
-
-## 3.7.0 - 2018-06-13
-
-### Changed
-
-- Adds all assets to the manifest that aren't in a chunk (kudos to [@Kronuz](https://github.com/Kronuz) see [#65](https://github.com/ztoben/assets-webpack-plugin/pull/65))
-
-## 3.6.3 - 2018-06-13
-
-### Changed
-
-- Add support for multiple files of the same extension (kudos to [@aaronatmycujoo](https://github.com/aaronatmycujoo) see [#79](https://github.com/ztoben/assets-webpack-plugin/pull/79) and [@Kronuz](https://github.com/Kronuz) see [#64](https://github.com/ztoben/assets-webpack-plugin/pull/64))
-
-## 3.6.2 - 2018-06-13
-
-### Changed
-
-- Fixed incorrect concatination of asset file names and directory path see [#88](https://github.com/ztoben/assets-webpack-plugin/issues/88)
-
-## 3.6.1 - 2018-06-13
-
-### Changed
-
-- webpack-dev-server (which uses memory-fs) correctly generates the manifest inside the memory file system (kudos to [@Kronuz](https://github.com/Kronuz) see [#90](https://github.com/ztoben/assets-webpack-plugin/pull/90))
-
-## 3.6.0 - 2018-05-29
-
-### Changed
-
-- webpack 4 support (kudos to [@ztoben](https://github.com/ztoben) and [@saveman71](https://github.com/saveman71) see [#89](https://github.com/ztoben/assets-webpack-plugin/pull/89))
-
-## 3.5.1 - 2017-01-20
-
-### Fixed
-
-- Support for source maps when `includeManifest` option is set.
-
-## 3.5.0 - 2016-10-21
-
-### Added
-
-- `includeManifest` option (kudos to Matt Krick [@mattkrick](https://github.com/mattkrick)).
-  [See docs](./README.md#includemanifest) for more details.
-
-## 3.4.0 - 2016-03-09
-
-### Changed
-
-- Do not write to assets file if output hasn't changed.
-
-## 3.2.0 - 2015-11-17
-
-### Added
-
-- `processOutput` option.
-
-## 3.1.0 - 2015-10-24
-
-### Added
-
-- Config now accepts a `fullPath` option.
+## 3.3.6 (2018/11/07)
+* Added additional configure() signatures that accept an Application context instead of Activity.
+* Deprecated AdColonyAdViewActivity, AdColonyNativeAdView, and onAudioStarted/onAudioStopped() callbacks.
+* Handle API level 28 changes for [default cleartext traffic behavior](https://developer.android.com/about/versions/pie/android-9.0-changes-28#framework-security-changes).
+* Several bug fixes and stability improvements.
+
+## 3.3.5 (2018/06/27)
+* Fixed RejectedExecutionException in issue [#37](https://github.com/AdColony/AdColony-Android-SDK-3/issues/37).
+* Made Android SDK changes needed to fix the Unity OnConfigurationCompleted callback issue in [#35](https://github.com/AdColony/AdColony-Unity-SDK-3/issues/35).
+* Several bug fixes and stability improvements.
+
+## 3.3.4 (2018/05/18)
+* Added a new API to pass user consent as required for compliance with the European Union's General Data Protection Regulation (GDPR).
+* Fixed new NullPointerException mentioned in issue [#29](https://github.com/AdColony/AdColony-Android-SDK-3/issues/29#issuecomment-381380548).
+* Several bug fixes and stability improvements.
+
+## 3.3.3 (2018/04/13)
+* Fixed issue [#29](https://github.com/AdColony/AdColony-Android-SDK-3/issues/29).
+* Several other bug fixes.
+
+## 3.3.2 (2018/03/16)
+* Several bug fixes.
+
+## 3.3.0 (2017/12/13)
+* Added Integral Ad Science (IAS) for viewability measurement.
+* Fixed storage overuse issue reported by a small number of publishers upgrading from 2.x -> 3.x.
+* Added an app option that allows publishers to disable screen sleeps during ad playback.
+* Several bug fixes, memory usage optimizations, and stability improvements.
+
+## 3.2.1 (2017/08/28)
+* Fixed AAR hosted on Bintray.
+
+## 3.2.0 (2017/08/24)
+* Android Oreo compatibility along with several bugs fixes, stabilty and security improvements.
+* User experience improvements via enhanced skippability controls and a new mute/unmute feature.
+* Post-install events APIs.
+* Crash reporting and a new, convenient test mode feature.
+
+## 3.1.2 (2017/04/06)
+* Updates for Unity and Adobe Air plugins.
+
+## 3.1.1 (2017/03/28)
+* Removed Compass™ APIs.
+
+## 3.1.0 (2017/03/06)
+* MOAT viewability support.
+* Added viewable impression tracking metric.
+* Added support for our dashboard's play frequency zone setting.
+* Fixed edge case IllegalStateException and NullPointerException on our MediaPlayer handler when our interstitial Activity is destroyed.
+* No longer setting HTTPUrlConnection redirect property globally.
+* Lowered our library's minimum SDK version to fix build issues with apps that support earlier versions. Devices below API 14 will still be blocked at runtime from viewing ads.
+
+## 3.0.7 (2016/12/20)
+* Increased safety in the case where our interstitial Activity is destroyed while paused due to memory pressure.
+
+## 3.0.6 (2016/11/30)
+* Fixed an edge case NPE in our interstitial Activity.
+* General stability improvements.
+
+## 3.0.5 (2016/11/09)
+* Exposed onLeftApplication and onClicked ad callbacks.
+* Fixed possible ad display issue for apps that configure AdColony post onCreate.
+
+## 3.0.4 (2016/10/10)
+* Initial public release.
+* Fixed issue with our x86 builds.
+* Various stability improvements/bug fixes.
+* Added messaging features to Compass, which includes both in-app messages and push notifications.
+
+## 3.0.3.2 (2016/09/14)
+* Support for vertical ads and improved ad orientation controls.
+* Added armeabi-v7a builds.
+* Added support for multi-screen.
+* Changed package name to com.adcolony.sdk.
+* Removed theme requirement for AdColony Activity manifest declarations.
+
+## 3.0.2.2 (2016/08/10)
+* Ensure out of date files from earlier SDK installs are invalidated.
+
+## 3.0.2.1: (2016/07/28)
+* Added support for native ads.
+* Added support for in-app purchase promo ads.
+* Added support for custom messages.
+* Introduction of AdColony Compass™.
+* Various stability improvements/bug fixes.
